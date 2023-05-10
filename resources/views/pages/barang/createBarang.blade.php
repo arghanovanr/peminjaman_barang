@@ -17,12 +17,12 @@
             <input type="text" name="kode" id="kode" class="form-control" autofocus>
             <label for="nama">Nama Barang </label>
             <input type="text" name="nama" id="nama" class="form-control" >
-            @error('nama')
+            @error('kode')
                 <span class="badge bg-danger text-white">
                     {{ $message }}
                 </span>
             @enderror
-            @error('kode')
+            @error('nama')
                 <span class="badge bg-danger text-white">
                     {{ $message }}
                 </span>
