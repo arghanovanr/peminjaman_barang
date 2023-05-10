@@ -27,4 +27,11 @@ Auth::routes();
 
 //CRUD Barang Kantor
 Route::get('/barang', [BarangController::class, 'index']);
+Route::get('/barang/input', [BarangController::class, 'create']);
+Route::post('/barang', [BarangController::class, 'store']);
+Route::get('/barang/{id}/edit', [BarangController::class, 'edit']);
+Route::put('/barang/{id}', [BarangController::class, 'update']);
+Route::delete('/barang/{id}', [BarangController::class, 'destroy']);
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
