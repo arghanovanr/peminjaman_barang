@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +25,6 @@ Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin'
 Route::get('/pegawai', 'PegawaiController@index')->name('pegawai')->middleware('pegawai');
 Auth::routes();
 
+//CRUD Barang Kantor
+Route::get('/barang', [BarangController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
