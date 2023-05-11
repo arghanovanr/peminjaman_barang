@@ -21,17 +21,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
-Route::get('/pegawai', 'PegawaiController@index')->name('pegawai')->middleware('pegawai');
 Auth::routes();
 
 //CRUD Barang Kantor
-Route::get('/barang', [BarangController::class, 'index']);
-Route::get('/barang/input', [BarangController::class, 'create']);
-Route::post('/barang', [BarangController::class, 'store']);
-Route::get('/barang/{id}/edit', [BarangController::class, 'edit']);
-Route::put('/barang/{id}', [BarangController::class, 'update']);
-Route::delete('/barang/{id}', [BarangController::class, 'destroy']);
+Route::get('/barang', [BarangController::class, 'index'])->middleware('auth');
+Route::get('/barang/input', [BarangController::class, 'create'])->middleware('auth');
+Route::post('/barang', [BarangController::class, 'store'])->middleware('auth');
+Route::get('/barang/{id}/edit', [BarangController::class, 'edit'])->middleware('auth');
+Route::put('/barang/{id}', [BarangController::class, 'update'])->middleware('auth');
+Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->middleware('auth');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

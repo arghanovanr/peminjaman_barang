@@ -56,6 +56,7 @@ class BarangController extends Controller
  
          // Update data
          $Barang = Barang::find($id);
+         $Barang->kode = $request->kode;
          $Barang->nama = $request->nama;
          $Barang->save();
  
