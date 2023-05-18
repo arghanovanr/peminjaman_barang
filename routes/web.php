@@ -21,7 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Auth::routes();
+
 
 //CRUD Barang Kantor
 Route::get('/barang', [BarangController::class, 'index'])->middleware('auth');
