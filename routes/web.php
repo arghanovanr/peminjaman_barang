@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\FormulirController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +21,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 //CRUD Barang Kantor
 Route::get('/barang', [BarangController::class, 'index'])->middleware('auth');
 Route::get('/barang/input', [BarangController::class, 'create'])->middleware('auth');
@@ -31,5 +29,12 @@ Route::get('/barang/{id}/edit', [BarangController::class, 'edit'])->middleware('
 Route::put('/barang/{id}', [BarangController::class, 'update'])->middleware('auth');
 Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->middleware('auth');
 
+//CRUD Formulir
+Route::get('/formulir', [FormulirController::class, 'index'])->middleware('auth');
+Route::get('/formulir/input', [FormulirController::class, 'create'])->middleware('auth');
+Route::post('/formulir', [FormulirController::class, 'store'])->middleware('auth');
+Route::get('/formulir/{id}/edit', [FormulirController::class, 'edit'])->middleware('auth');
+Route::put('/formulir/{id}', [FormulirController::class, 'update'])->middleware('auth');
+Route::delete('/formulir/{id}', [FormulirController::class, 'destroy'])->middleware('auth');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

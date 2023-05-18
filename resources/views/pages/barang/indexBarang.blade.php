@@ -9,6 +9,9 @@
 @endsection
 
 @section('content')
+
+<a href="/barang/input" class="btn btn-primary btn-sm">Input</a>
+
 <table class="table">
     <thead>
       <tr>

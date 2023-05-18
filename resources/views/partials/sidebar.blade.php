@@ -65,7 +65,7 @@
         </li>
         <li class="nav-item">
           <a href="/formulir" class="nav-link">
-            <i class="nav-icon fas fa-sticky-note-o"></i>
+            <i class="nav-icon fas fa-file"></i>
             <p>
               Formulir
             </p>
