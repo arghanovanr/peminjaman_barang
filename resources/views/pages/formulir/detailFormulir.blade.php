@@ -39,7 +39,7 @@
                           <form action="/pinjambarang/{{$datapinjambarang->id}}" method="POST">
                             @csrf
                             @method('delete')
-                            <a href="/formulir/{{$datapinjambarang->id}}/edit" class="btn btn-info btn-sm">Detail</a>
+                            <a href="/pinjambarang/{{$datapinjambarang->id}}/edit" class="btn btn-info btn-sm">edit</a>
                             <input type="submit" value="delete" class="btn btn-danger btn-sm">
                           </form>  
                         </td>
