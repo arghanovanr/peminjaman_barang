@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-    Barang Kantor
+    Formulir Peminjaman Barang
 @endsection
 
 @section('sub-title')
-    Edit Barang Kantor
+    Edit Formulir Peminjaman Barang
 @endsection
 
 @section('content')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Formulir;
+use App\Models\PinjamBarang;
 use Illuminate\Support\Facades\Auth;
 
 class FormulirController extends Controller
@@ -49,7 +50,11 @@ class FormulirController extends Controller
 
         // Mencari data ruang sesuai id
         $Formulir = Formulir::find($id);
-        return view('pages.formulir.detailFormulir', ['formulir' => $Formulir]);
+
+        // Menampilkan semua data Pinjam Barang sesuai ID Formulir
+        $PinjamBarang = PinjamBarang::where('formulir_id', $id)->get();
+
+        return view('pages.formulir.detailFormulir', ['formulir' => $Formulir, 'pinjambarang' => $PinjamBarang]);
     }
 
     // Menampilkan halaman edit ruang
