@@ -42,7 +42,8 @@ class PinjamBarangController extends Controller
 
         // Mencari data pinjambarang sesuai id
         $PinjamBarang = PinjamBarang::find($id);
-        return view('pages.pinjambarang.editFormulir', ['pinjambarang' => $PinjamBarang]);
+        $Barang = Barang::all();
+        return view('pages.pinjambarang.editPinjamBarang', ['barang' => $Barang, 'pinjambarang' => $PinjamBarang]);
     }
 
     public function update($id, Request $request)

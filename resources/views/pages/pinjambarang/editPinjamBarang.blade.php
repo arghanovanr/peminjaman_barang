@@ -10,11 +10,11 @@
 
 @section('content')
 
-<form action="/pinjambarang/{{$barang->id}}" method="POST">
+<form action="/pinjambarang/{{$pinjambarang->id}}" method="POST">
     @csrf
     @method('put')
     <div class="form-group">
-        <select type="text" class="form-control" name="id_mitra" id="id_mitra">
+        <select type="text" class="form-control" name="barang_id" id="barang_id">
             <option value="{{$pinjambarang->barang_id}}" selected>{{$pinjambarang->barang->nama}}</option>
             @forelse ($barang as $item)
                 <option value="{{ $item->id }}">{{ $item->nama }}</option>

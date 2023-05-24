@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -44,6 +45,6 @@ class User extends Authenticatable
 
     public function formulir()
     {
-        return $this->hasMany(Formulir::class,'user_id');
+        return $this->hasMany(Formulir::class, 'user_id');
     }
 }

@@ -3,8 +3,9 @@
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\FormulirController;
 use App\Http\Controllers\PinjamBarangController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,18 +18,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
-//CRUD Barang Kantor
-Route::get('/barang', [BarangController::class, 'index'])->middleware('auth');
-Route::get('/barang/input', [BarangController::class, 'create'])->middleware('auth');
-Route::post('/barang', [BarangController::class, 'store'])->middleware('auth');
-Route::get('/barang/{id}/edit', [BarangController::class, 'edit'])->middleware('auth');
-Route::put('/barang/{id}', [BarangController::class, 'update'])->middleware('auth');
-Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->middleware('auth');
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    //Data Master
+    Route::get('/barang', [BarangController::class, 'index'])->middleware('auth');
+    Route::get('/barang/input', [BarangController::class, 'create'])->middleware('auth');
+    Route::post('/barang', [BarangController::class, 'store'])->middleware('auth');
+    Route::get('/barang/{id}/edit', [BarangController::class, 'edit'])->middleware('auth');
+    Route::put('/barang/{id}', [BarangController::class, 'update'])->middleware('auth');
+    Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->middleware('auth');
+    // User Management Route
+    Route::get('/user', [UserController::class, 'index'])->middleware('auth');
+    Route::get('/user/{id}/edit', [UserController::class, 'edit'])->middleware('auth');
+    Route::delete('/user/{id}', [UserController::class, 'destroy'])->middleware('auth');
+    Route::put('/user/{id}', [UserController::class, 'update'])->middleware('auth');
+    Route::get('/userpass/{id}/reset', [UserController::class, 'resetpass'])->middleware('auth');
+    Route::put('/userpass/{id}', [UserController::class, 'updatepass'])->middleware('auth');
+});
 
 //CRUD Formulir
 Route::get('/formulir', [FormulirController::class, 'index'])->middleware('auth');
@@ -45,5 +55,8 @@ Route::post('/pinjambarang', [PinjamBarangController::class, 'store'])->middlewa
 Route::get('/pinjambarang/{id}/edit', [PinjamBarangController::class, 'edit'])->middleware('auth');
 Route::put('/pinjambarang/{id}', [PinjamBarangController::class, 'update'])->middleware('auth');
 Route::delete('/pinjambarang/{id}', [PinjamBarangController::class, 'destroy'])->middleware('auth');
+
+//CRUD User
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
